@@ -6,6 +6,11 @@ import dbConfig from './config/database';
 import { UsersModule } from './modules/users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dbConfig), UsersModule],
+  imports: [
+    TypeOrmModule.forRoot({
+      ...dbConfig,
+    }),
+    UsersModule,
+  ],
 })
 export class AppModule {}

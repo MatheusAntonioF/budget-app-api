@@ -3,7 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 const dbConfig: TypeOrmModuleOptions = {
   type: 'postgres',
 
-  host: 'localhost',
+  host: 'budget_db',
   port: 5432,
   username: 'postgres',
   password: 'docker',
