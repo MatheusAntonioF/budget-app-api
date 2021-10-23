@@ -14,9 +14,10 @@ import { CreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
 import { CreateUserUseCase } from 'src/modules/users/useCases/CreateUserUseCase';
 import { DeleteUserUseCase } from 'src/modules/users/useCases/DeleteUserUseCase';
 import { GetUserUseCase } from 'src/modules/users/useCases/GetUserUseCase';
+import { PublicRoute } from 'src/shared/decorators/public.resource';
 
 @Controller('users')
-export class UsersController {
+class UsersController {
   constructor(
     private readonly createUserUseCase: CreateUserUseCase,
     private readonly getUserUseCase: GetUserUseCase,
@@ -31,6 +32,7 @@ export class UsersController {
   }
 
   @Post()
+  @PublicRoute()
   async create(@Body() createUser: CreateUserDTO, @Res() response: Response) {
     const createdUser = await this.createUserUseCase.execute(createUser);
 
@@ -44,3 +46,5 @@ export class UsersController {
     return response.status(HttpStatus.NO_CONTENT).send();
   }
 }
+
+export { UsersController };

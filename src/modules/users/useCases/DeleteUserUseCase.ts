@@ -1,4 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+
 import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
 
 @Injectable()

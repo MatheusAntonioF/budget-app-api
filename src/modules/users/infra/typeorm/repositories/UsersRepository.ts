@@ -1,8 +1,10 @@
 import { InjectRepository } from '@nestjs/typeorm';
+
+import { User } from '../entities/User';
+
 import { CreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
 import { IUsersRepository } from 'src/modules/users/interfaces/IUsersRepository';
 import { Repository } from 'typeorm';
-import { User } from '../entities/User';
 
 class UsersRepository implements IUsersRepository {
   constructor(

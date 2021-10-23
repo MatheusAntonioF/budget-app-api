@@ -8,6 +8,8 @@ import { CreateUserUseCase } from './useCases/CreateUserUseCase';
 import { DeleteUserUseCase } from './useCases/DeleteUserUseCase';
 import { GetUserUseCase } from './useCases/GetUserUseCase';
 
+import { HashProvider } from 'src/shared/providers/HashProvider';
+
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsersController],
@@ -16,6 +18,8 @@ import { GetUserUseCase } from './useCases/GetUserUseCase';
     CreateUserUseCase,
     GetUserUseCase,
     DeleteUserUseCase,
+    HashProvider,
   ],
+  exports: [UsersRepository],
 })
 export class UsersModule {}
