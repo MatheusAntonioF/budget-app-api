@@ -1,8 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { HashProvider } from 'src/shared/providers/HashProvider';
+
 import { CreateUserDTO } from '../dtos/CreateUserDTO';
 import { User } from '../infra/typeorm/entities/User';
 import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
+
+import { HashProvider } from 'src/shared/providers/HashProvider';
 
 @Injectable()
 class CreateUserUseCase {

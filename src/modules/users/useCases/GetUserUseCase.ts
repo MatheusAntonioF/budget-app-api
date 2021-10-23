@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+
 import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
 
 @Injectable()
@@ -7,6 +8,9 @@ class GetUserUseCase {
 
   async execute(id: string) {
     const foundUser = await this.usersRepository.findById(id);
+
+    if (!foundUser)
+      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
 
     return foundUser;
   }

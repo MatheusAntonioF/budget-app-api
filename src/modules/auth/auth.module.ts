@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { authConfig } from 'src/config/auth';
+
 import { UsersModule } from '../users/users.module';
+import { JwtStrategy } from './guards/strategies/jwt.strategy';
+import { LocalStrategy } from './guards/strategies/local.strategy';
 import { AuthenticationController } from './infra/http/controllers/AuthenticationController';
-import { LocalStrategy } from './guards/local.strategy';
-import { HashProvider } from 'src/shared/providers/HashProvider';
 import { AuthenticationUserUseCase } from './useCases/AuthenticateUserUseCase';
+
+import { authConfig } from 'src/config/auth';
+import { HashProvider } from 'src/shared/providers/HashProvider';
 
 @Module({
   imports: [
@@ -18,6 +21,11 @@ import { AuthenticationUserUseCase } from './useCases/AuthenticateUserUseCase';
     }),
   ],
   controllers: [AuthenticationController],
-  providers: [AuthenticationUserUseCase, LocalStrategy, HashProvider],
+  providers: [
+    AuthenticationUserUseCase,
+    LocalStrategy,
+    JwtStrategy,
+    HashProvider,
+  ],
 })
 export class AuthModule {}

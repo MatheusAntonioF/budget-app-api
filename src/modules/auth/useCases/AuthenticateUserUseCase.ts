@@ -1,5 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+
+import { ITokenPayload } from '../dtos/ITokenPayload';
+
 import { User } from 'src/modules/users/infra/typeorm/entities/User';
 import { UsersRepository } from 'src/modules/users/infra/typeorm/repositories/UsersRepository';
 import { HashProvider } from 'src/shared/providers/HashProvider';
@@ -35,13 +38,18 @@ class AuthenticationUserUseCase {
         HttpStatus.FORBIDDEN,
       );
 
+    delete foundUser.password;
+
     return foundUser;
   }
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+  async login({ id, name, email }: ITokenPayload) {
     return {
-      access_token: this.jwtService.sign(payload),
+      token: this.jwtService.sign({
+        id,
+        name,
+        email,
+      }),
     };
   }
 }
