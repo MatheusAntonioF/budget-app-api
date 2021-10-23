@@ -9,6 +9,7 @@ class UsersRepository implements IUsersRepository {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
   ) {}
+
   async findById(id: string): Promise<User> {
     const foundUser = await this.usersRepository.findOne(id);
 
@@ -29,6 +30,12 @@ class UsersRepository implements IUsersRepository {
     await this.usersRepository.save(user);
 
     return user;
+  }
+
+  async delete(id: string): Promise<boolean> {
+    const deletedUser = await this.usersRepository.delete(id);
+
+    return !!deletedUser;
   }
 }
 
