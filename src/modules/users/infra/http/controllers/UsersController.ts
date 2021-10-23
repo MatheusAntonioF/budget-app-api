@@ -16,7 +16,7 @@ import { DeleteUserUseCase } from 'src/modules/users/useCases/DeleteUserUseCase'
 import { GetUserUseCase } from 'src/modules/users/useCases/GetUserUseCase';
 
 @Controller('users')
-export class UsersController {
+class UsersController {
   constructor(
     private readonly createUserUseCase: CreateUserUseCase,
     private readonly getUserUseCase: GetUserUseCase,
@@ -44,3 +44,5 @@ export class UsersController {
     return response.status(HttpStatus.NO_CONTENT).send();
   }
 }
+
+export { UsersController };

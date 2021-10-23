@@ -23,6 +23,8 @@ services:
       - budget_db
     depends_on:
       - budget_db
+    environment:
+      DATABASE_HOST: budget_db
 volumes:
   pgdata:
     driver: local
