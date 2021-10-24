@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
-import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
+import { UsersRepository } from '../infra/repositories/implementations/UsersRepository';
 
 @Injectable()
 class DeleteUserUseCase {

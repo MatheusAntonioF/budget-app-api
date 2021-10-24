@@ -5,9 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import dbConfig from './config/database';
 import { AuthModule } from './modules/auth/auth.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
+import { SpendingsModule } from './modules/spendings/spendings.module';
 import { UsersModule } from './modules/users/users.module';
-
-import { Connection } from 'typeorm';
 
 @Module({
   imports: [
@@ -18,6 +17,7 @@ import { Connection } from 'typeorm';
     ConfigModule.forRoot(),
     UsersModule,
     AuthModule,
+    SpendingsModule,
   ],
   providers: [
     {
@@ -26,6 +26,4 @@ import { Connection } from 'typeorm';
     },
   ],
 })
-export class AppModule {
-  constructor(private connection: Connection) {}
-}
+export class AppModule {}

@@ -4,7 +4,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { AuthenticationUserUseCase } from '../../useCases/AuthenticateUserUseCase';
 
 import { Strategy } from 'passport-local';
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
+import { User } from 'src/modules/users/infra/entities/User';
 
 @Injectable()
 class LocalStrategy extends PassportStrategy(Strategy) {

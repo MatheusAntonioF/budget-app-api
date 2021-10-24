@@ -1,8 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import { CreateUserDTO } from '../dtos/CreateUserDTO';
-import { User } from '../infra/typeorm/entities/User';
-import { UsersRepository } from '../infra/typeorm/repositories/UsersRepository';
+import { User } from '../infra/entities/User';
+import { UsersRepository } from '../infra/repositories/implementations/UsersRepository';
 
 import { HashProvider } from 'src/shared/providers/HashProvider';
 
@@ -21,7 +21,7 @@ class CreateUserUseCase {
     const userExists = await this.usersRepository.findByEmail(email);
 
     if (userExists)
-      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Email already exists', HttpStatus.BAD_REQUEST);
 
     const passwordHashed = await this.hashProvider.generateHash(password);
 
