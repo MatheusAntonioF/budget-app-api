@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 
 import { ICreateSpendingDTO } from '../dtos/ICreateSpendingDTO';
-import { Spendings } from '../infra/entities/Spendings';
-import { ISpendingsRepository } from '../infra/repositories/ISpendingsRepository';
+import { Spendings } from '../infra/typeorm/entities/Spendings';
+import { ISpendingsRepository } from '../infra/typeorm/repositories/ISpendingsRepository';
 
 @Injectable()
 class CreateSpendingUseCase {

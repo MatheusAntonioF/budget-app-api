@@ -1,15 +1,16 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 
-import { CreateUserDTO } from '../dtos/CreateUserDTO';
-import { User } from '../infra/entities/User';
-import { UsersRepository } from '../infra/repositories/implementations/UsersRepository';
+import { ICreateUserDTO } from '../dtos/CreateUserDTO';
+import { User } from '../infra/typeorm/entities/User';
+import { IUsersRepository } from '../infra/typeorm/repositories/IUsersRepository';
 
 import { HashProvider } from 'src/shared/providers/HashProvider';
 
 @Injectable()
 class CreateUserUseCase {
   constructor(
-    private readonly usersRepository: UsersRepository,
+    @Inject('UsersRepository')
+    private readonly usersRepository: IUsersRepository,
     private readonly hashProvider: HashProvider,
   ) {}
 
@@ -17,7 +18,7 @@ class CreateUserUseCase {
     name,
     email,
     password,
-  }: CreateUserDTO): Promise<Omit<User, 'password'>> {
+  }: ICreateUserDTO): Promise<Omit<User, 'password'>> {
     const userExists = await this.usersRepository.findByEmail(email);
 
     if (userExists)

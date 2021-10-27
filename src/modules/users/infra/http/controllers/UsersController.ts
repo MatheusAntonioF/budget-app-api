@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 
 import { Response } from 'express';
-import { CreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
+import { ICreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
 import { CreateUserUseCase } from 'src/modules/users/useCases/CreateUserUseCase';
 import { DeleteUserUseCase } from 'src/modules/users/useCases/DeleteUserUseCase';
 import { GetUserUseCase } from 'src/modules/users/useCases/GetUserUseCase';
@@ -33,7 +33,7 @@ class UsersController {
 
   @Post()
   @PublicRoute()
-  async create(@Body() createUser: CreateUserDTO, @Res() response: Response) {
+  async create(@Body() createUser: ICreateUserDTO, @Res() response: Response) {
     const createdUser = await this.createUserUseCase.execute(createUser);
 
     return response.json(createdUser);

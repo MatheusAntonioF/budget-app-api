@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 
-import { Spendings } from '../infra/entities/Spendings';
-import { ISpendingsRepository } from '../infra/repositories/ISpendingsRepository';
+import { Spendings } from '../infra/typeorm/entities/Spendings';
+import { ISpendingsRepository } from '../infra/typeorm/repositories/ISpendingsRepository';
 
 @Injectable()
 class GetSpendingUseCase {

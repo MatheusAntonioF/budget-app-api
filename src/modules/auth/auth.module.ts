@@ -25,7 +25,10 @@ import { HashProvider } from 'src/shared/providers/HashProvider';
     AuthenticationUserUseCase,
     LocalStrategy,
     JwtStrategy,
-    HashProvider,
+    {
+      provide: 'HashProvider',
+      useClass: HashProvider,
+    },
   ],
 })
 export class AuthModule {}

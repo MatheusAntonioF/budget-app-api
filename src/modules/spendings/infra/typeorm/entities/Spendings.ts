@@ -1,10 +1,9 @@
-import { User } from 'src/modules/users/infra/entities/User';
+import { User } from 'src/modules/users/infra/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,

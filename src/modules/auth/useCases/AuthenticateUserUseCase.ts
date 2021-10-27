@@ -1,18 +1,20 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 import { ITokenPayload } from '../dtos/ITokenPayload';
 
-import { User } from 'src/modules/users/infra/entities/User';
-import { UsersRepository } from 'src/modules/users/infra/repositories/implementations/UsersRepository';
-import { HashProvider } from 'src/shared/providers/HashProvider';
+import { User } from 'src/modules/users/infra/typeorm/entities/User';
+import { IUsersRepository } from 'src/modules/users/infra/typeorm/repositories/IUsersRepository';
+import { IHashProvider } from 'src/shared/providers/HashProvider/interfaces/IHashProvider';
 
 @Injectable()
 class AuthenticationUserUseCase {
   constructor(
-    private readonly usersService: UsersRepository,
+    @Inject('UsersRepository')
+    private readonly usersService: IUsersRepository,
+    @Inject('HashProvider')
+    private readonly hashProvider: IHashProvider,
     private readonly jwtService: JwtService,
-    private readonly hashProvider: HashProvider,
   ) {}
 
   async validateUser(

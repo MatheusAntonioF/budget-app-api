@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 
-import { ISpendingsRepository } from '../infra/repositories/ISpendingsRepository';
+import { ISpendingsRepository } from '../infra/typeorm/repositories/ISpendingsRepository';
 
 @Injectable()
 class DeleteSpendingUseCase {
