@@ -10,7 +10,7 @@ class GetUserUseCase {
     const foundUser = await this.usersRepository.findById(id);
 
     if (!foundUser)
-      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Not Found', HttpStatus.BAD_REQUEST);
 
     return foundUser;
   }

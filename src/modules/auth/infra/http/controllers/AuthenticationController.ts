@@ -4,6 +4,7 @@ import { Request } from 'express';
 import { JwtAuthGuard } from 'src/modules/auth/guards/jwt-auth.guard';
 import { LocalGuard } from 'src/modules/auth/guards/local-auth.guard';
 import { AuthenticationUserUseCase } from 'src/modules/auth/useCases/AuthenticateUserUseCase';
+import { PublicRoute } from 'src/shared/decorators/public.resource';
 
 interface ICredentials {
   id: string;
@@ -16,6 +17,7 @@ export class AuthenticationController {
   constructor(private authenticationUseCase: AuthenticationUserUseCase) {}
 
   @UseGuards(LocalGuard)
+  @PublicRoute()
   @Post('login')
   async login(@Req() request: Request) {
     const { id, name, email } = request.user as ICredentials;

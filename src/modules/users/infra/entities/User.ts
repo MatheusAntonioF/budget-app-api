@@ -1,10 +1,7 @@
-import { Spendings } from 'src/modules/spendings/infra/typeorm/entities/Spendings';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -19,13 +16,6 @@ class User {
 
   @Column()
   email: string;
-
-  @OneToMany(() => Spendings, (spending) => spending.user)
-  @JoinColumn({ name: 'spending_id' })
-  spendings: Spendings[];
-
-  @Column()
-  spending_id: string;
 
   @Column()
   password: string;

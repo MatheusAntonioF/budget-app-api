@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  JoinTable,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -20,18 +21,18 @@ class Spendings {
   @Column()
   description: string;
 
-  @ManyToOne(() => User, (user) => user.spendings)
-  @JoinColumn({ name: 'user_id' })
-  user: User;
-
-  @Column()
-  user_id: string;
-
   @Column()
   value: number;
 
   @Column()
   date: Date;
+
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;

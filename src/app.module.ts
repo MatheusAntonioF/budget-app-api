@@ -14,6 +14,7 @@ import { UsersModule } from './modules/users/users.module';
       ...dbConfig,
       autoLoadEntities: true,
     }),
+
     ConfigModule.forRoot(),
     UsersModule,
     AuthModule,

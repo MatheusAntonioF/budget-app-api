@@ -10,7 +10,7 @@ class DeleteUserUseCase {
     const userExists = await this.usersRepository.findById(id);
 
     if (!userExists)
-      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Not Found', HttpStatus.BAD_REQUEST);
 
     await this.usersRepository.delete(id);
   }
