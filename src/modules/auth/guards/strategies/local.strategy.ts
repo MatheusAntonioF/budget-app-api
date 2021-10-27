@@ -4,7 +4,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { AuthenticationUserUseCase } from '../../useCases/AuthenticateUserUseCase';
 
 import { Strategy } from 'passport-local';
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
+import { User } from 'src/modules/users/infra/entities/User';
 
 @Injectable()
 class LocalStrategy extends PassportStrategy(Strategy) {
@@ -13,13 +13,10 @@ class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(
-    username: string,
+    email: string,
     password: string,
   ): Promise<Omit<User, 'password'>> {
-    const user = await this.authenticationUseCase.validateUser(
-      username,
-      password,
-    );
+    const user = await this.authenticationUseCase.validateUser(email, password);
     if (!user) throw new UnauthorizedException();
 
     return user;

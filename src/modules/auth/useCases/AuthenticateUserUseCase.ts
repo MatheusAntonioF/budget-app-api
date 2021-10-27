@@ -3,8 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 
 import { ITokenPayload } from '../dtos/ITokenPayload';
 
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
-import { UsersRepository } from 'src/modules/users/infra/typeorm/repositories/UsersRepository';
+import { User } from 'src/modules/users/infra/entities/User';
+import { UsersRepository } from 'src/modules/users/infra/repositories/implementations/UsersRepository';
 import { HashProvider } from 'src/shared/providers/HashProvider';
 
 @Injectable()

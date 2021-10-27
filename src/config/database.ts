@@ -11,14 +11,12 @@ const dbConfig: TypeOrmModuleOptions = {
   password: 'docker',
   database: 'budget_app_db',
 
-  synchronize: true,
-
-  entities: ['dist/modules/**/infra/typeorm/entities/User{.ts,.js}'],
+  entities: ['./dist/modules/**/infra/entities/*{.ts,.js}'],
 
   migrations: ['dist/shared/database/migrations/*.js'],
 
   cli: {
-    entitiesDir: 'src/modules/**/infra/typeorm/entities',
+    entitiesDir: 'src/modules/**/infra/entities',
     migrationsDir: 'src/shared/database/migrations',
   },
 };
