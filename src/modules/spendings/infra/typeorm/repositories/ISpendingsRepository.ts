@@ -1,5 +1,5 @@
-import { ICreateSpendingDTO } from '../../dtos/ICreateSpendingDTO';
-import { IUpdateSpendingDTO } from '../../dtos/IUpdateSpendingDTO';
+import { ICreateSpendingDTO } from '../../../dtos/ICreateSpendingDTO';
+import { IUpdateSpendingDTO } from '../../../dtos/IUpdateSpendingDTO';
 import { Spendings } from '../entities/Spendings';
 
 interface ISpendingsRepository {

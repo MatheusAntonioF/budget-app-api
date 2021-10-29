@@ -17,7 +17,7 @@ import { HashProvider } from 'src/shared/providers/HashProvider';
     PassportModule,
     JwtModule.register({
       secret: authConfig.secret,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '10m' },
     }),
   ],
   controllers: [AuthenticationController],
@@ -25,7 +25,10 @@ import { HashProvider } from 'src/shared/providers/HashProvider';
     AuthenticationUserUseCase,
     LocalStrategy,
     JwtStrategy,
-    HashProvider,
+    {
+      provide: 'HashProvider',
+      useClass: HashProvider,
+    },
   ],
 })
 export class AuthModule {}

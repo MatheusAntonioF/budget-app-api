@@ -11,6 +11,8 @@ const dbConfig: TypeOrmModuleOptions = {
   password: 'docker',
   database: 'budget_app_db',
 
+  logging: true,
+
   entities: ['./dist/modules/**/infra/entities/*{.ts,.js}'],
 
   migrations: ['dist/shared/database/migrations/*.js'],

@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../IUsersRepository';
 
-import { CreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
+import { ICreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
 import { Repository } from 'typeorm';
 
 class UsersRepository implements IUsersRepository {
@@ -26,7 +26,7 @@ class UsersRepository implements IUsersRepository {
     return foundUser;
   }
 
-  async create({ name, email, password }: CreateUserDTO): Promise<User> {
+  async create({ name, email, password }: ICreateUserDTO): Promise<User> {
     const user = this.usersRepository.create({ name, email, password });
 
     await this.usersRepository.save(user);

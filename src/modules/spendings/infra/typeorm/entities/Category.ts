@@ -1,17 +1,19 @@
-import { User } from 'src/modules/users/infra/entities/User';
+import { Spendings } from './Spendings';
+
+import { User } from 'src/modules/users/infra/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('spendings')
-class Spendings {
+@Entity('categories')
+class Category {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -19,13 +21,7 @@ class Spendings {
   name: string;
 
   @Column()
-  description: string;
-
-  @Column()
-  value: number;
-
-  @Column()
-  date: Date;
+  color_hex: string;
 
   @Column()
   user_id: string;
@@ -34,6 +30,9 @@ class Spendings {
   @JoinColumn({ name: 'user_id' })
   user: User;
 
+  @OneToMany(() => Spendings, (spendings) => spendings.category)
+  spendings: Spendings[];
+
   @CreateDateColumn()
   created_at: Date;
 
@@ -41,4 +40,4 @@ class Spendings {
   updated_at: Date;
 }
 
-export { Spendings };
+export { Category };

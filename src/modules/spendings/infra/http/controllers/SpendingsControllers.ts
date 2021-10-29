@@ -19,7 +19,7 @@ import { DeleteSpendingUseCase } from 'src/modules/spendings/useCases/DeleteSpen
 import { GetAllSpendingsUseCase } from 'src/modules/spendings/useCases/GetAllSpendingsUseCase';
 import { GetSpendingUseCase } from 'src/modules/spendings/useCases/GetSpendingUseCase';
 import { UpdateSpendingUseCase } from 'src/modules/spendings/useCases/UpdateSpendingUseCase';
-import { User } from 'src/modules/users/infra/entities/User';
+import { User } from 'src/modules/users/infra/typeorm/entities/User';
 
 @Controller('spendings')
 class SpendingsController {

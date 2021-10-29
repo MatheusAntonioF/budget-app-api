@@ -4,6 +4,7 @@ interface ICreateSpendingDTO {
   date: Date;
   value: number;
   user_id: string;
+  category_id: string;
 }
 
 export { ICreateSpendingDTO };

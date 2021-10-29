@@ -1,10 +1,13 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 
-import { UsersRepository } from '../infra/repositories/implementations/UsersRepository';
+import { IUsersRepository } from '../infra/typeorm/repositories/IUsersRepository';
 
 @Injectable()
 class GetUserUseCase {
-  constructor(private readonly usersRepository: UsersRepository) {}
+  constructor(
+    @Inject('UsersRepository')
+    private readonly usersRepository: IUsersRepository,
+  ) {}
 
   async execute(id: string) {
     const foundUser = await this.usersRepository.findById(id);
