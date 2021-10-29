@@ -16,3 +16,9 @@
 - [x] Update a spending
 - [x] Get a spending <!-- If a want to load user's data just put relation: ['user'] in whereOptions  -->
 - [x] List all spendings by user_id
+
+## Categories
+
+- [x] Create a new Category
+- [x] List all categories with your spendings
+- [ ] Show category with your spendings

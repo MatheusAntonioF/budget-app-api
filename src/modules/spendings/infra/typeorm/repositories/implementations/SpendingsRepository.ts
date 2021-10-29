@@ -29,6 +29,7 @@ class SpendingsRepository implements ISpendingsRepository {
     date,
     value,
     user_id,
+    category_id,
   }: ICreateSpendingDTO): Promise<Spendings> {
     const spendingsRepository = getRepository(Spendings);
 
@@ -38,6 +39,7 @@ class SpendingsRepository implements ISpendingsRepository {
       date,
       value,
       user_id,
+      category_id,
     });
 
     const createdSpending = await spendingsRepository.save(spending);
