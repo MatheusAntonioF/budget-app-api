@@ -12,6 +12,7 @@ import { CreateSpendingUseCase } from './useCases/CreateSpendingUseCase';
 import { DeleteSpendingUseCase } from './useCases/DeleteSpendingUseCase';
 import { GetAllCategoriesUseCase } from './useCases/GetAllCategoriesUseCase';
 import { GetAllSpendingsUseCase } from './useCases/GetAllSpendingsUseCase';
+import { GetCategoryUseCase } from './useCases/GetCategoryUseCase';
 import { GetSpendingUseCase } from './useCases/GetSpendingUseCase';
 import { UpdateSpendingUseCase } from './useCases/UpdateSpendingUseCase';
 
@@ -34,6 +35,7 @@ import { UpdateSpendingUseCase } from './useCases/UpdateSpendingUseCase';
     UpdateSpendingUseCase,
     CreateCategoryUseCase,
     GetAllCategoriesUseCase,
+    GetCategoryUseCase,
   ],
 })
 export class SpendingsModule {}

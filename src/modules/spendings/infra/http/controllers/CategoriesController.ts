@@ -1,16 +1,18 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 
 import { Request, Response } from 'express';
 import { ICreateCategoryDTO } from 'src/modules/spendings/dtos/ICreateCategoryDTO';
 import { CreateCategoryUseCase } from 'src/modules/spendings/useCases/CreateCategoryUseCase';
 import { GetAllCategoriesUseCase } from 'src/modules/spendings/useCases/GetAllCategoriesUseCase';
+import { GetCategoryUseCase } from 'src/modules/spendings/useCases/GetCategoryUseCase';
 import { User } from 'src/modules/users/infra/typeorm/entities/User';
 
 @Controller('categories')
 class CategoriesController {
   constructor(
     private readonly createCategoryUseCase: CreateCategoryUseCase,
-    private readonly getAllCategories: GetAllCategoriesUseCase,
+    private readonly getAllCategoriesUseCase: GetAllCategoriesUseCase,
+    private readonly getCategoryUseCase: GetCategoryUseCase,
   ) {}
 
   @Get()
@@ -20,9 +22,19 @@ class CategoriesController {
   ): Promise<Response> {
     const { id: user_id } = request.user as User;
 
-    const allCategories = await this.getAllCategories.execute(user_id);
+    const allCategories = await this.getAllCategoriesUseCase.execute(user_id);
 
     return response.json(allCategories);
+  }
+
+  @Get(':id')
+  async show(
+    @Param('id') id: string,
+    @Res() response: Response,
+  ): Promise<Response> {
+    const category = await this.getCategoryUseCase.execute(id);
+
+    return response.json(category);
   }
 
   @Post()
