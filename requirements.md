@@ -1,3 +1,5 @@
+# Functional Requirements
+
 ## Users
 
 - [x] Show user detail
@@ -21,4 +23,9 @@
 
 - [x] Create a new Category
 - [x] List all categories with your spendings
-- [ ] Show category with your spendings
+- [x] Show category with your spendings
+
+## Non Functional Requirements
+
+- [ ] Implement validation on body request
+- [ ] Implement refresh token
