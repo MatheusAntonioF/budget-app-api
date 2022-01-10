@@ -1,9 +1,9 @@
+import { getRepository } from 'typeorm';
+
+import { ICreateSpendingDTO } from '../../../../dtos/ICreateSpendingDTO';
+import { IUpdateSpendingDTO } from '../../../../dtos/IUpdateSpendingDTO';
 import { Spendings } from '../../entities/Spendings';
 import { ISpendingsRepository } from '../ISpendingsRepository';
-
-import { ICreateSpendingDTO } from 'src/modules/spendings/dtos/ICreateSpendingDTO';
-import { IUpdateSpendingDTO } from 'src/modules/spendings/dtos/IUpdateSpendingDTO';
-import { getRepository } from 'typeorm';
 
 class SpendingsRepository implements ISpendingsRepository {
   async getAllSpendingsByUserId(user_id: string): Promise<Spendings[]> {

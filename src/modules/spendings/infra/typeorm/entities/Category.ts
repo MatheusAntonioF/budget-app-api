@@ -1,6 +1,3 @@
-import { Spendings } from './Spendings';
-
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
 import {
   Column,
   CreateDateColumn,
@@ -11,6 +8,9 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import { User } from '../../../../users/infra/typeorm/entities/User';
+import { Spendings } from './Spendings';
 
 @Entity('categories')
 class Category {

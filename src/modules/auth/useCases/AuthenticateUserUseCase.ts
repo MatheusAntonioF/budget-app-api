@@ -1,11 +1,10 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
+import { User } from '../../../modules/users/infra/typeorm/entities/User';
+import { IHashProvider } from '../../../shared/providers/HashProvider/interfaces/IHashProvider';
+import { IUsersRepository } from '../../users/infra/typeorm/repositories/IUsersRepository';
 import { ITokenPayload } from '../dtos/ITokenPayload';
-
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
-import { IUsersRepository } from 'src/modules/users/infra/typeorm/repositories/IUsersRepository';
-import { IHashProvider } from 'src/shared/providers/HashProvider/interfaces/IHashProvider';
 
 @Injectable()
 class AuthenticationUserUseCase {

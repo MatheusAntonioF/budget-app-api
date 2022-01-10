@@ -12,14 +12,15 @@ import {
 } from '@nestjs/common';
 
 import { Request, Response } from 'express';
-import { ICreateSpendingDTO } from 'src/modules/spendings/dtos/ICreateSpendingDTO';
-import { IUpdateSpendingDTO } from 'src/modules/spendings/dtos/IUpdateSpendingDTO';
-import { CreateSpendingUseCase } from 'src/modules/spendings/useCases/CreateSpendingUseCase';
-import { DeleteSpendingUseCase } from 'src/modules/spendings/useCases/DeleteSpendingUseCase';
-import { GetAllSpendingsUseCase } from 'src/modules/spendings/useCases/GetAllSpendingsUseCase';
-import { GetSpendingUseCase } from 'src/modules/spendings/useCases/GetSpendingUseCase';
-import { UpdateSpendingUseCase } from 'src/modules/spendings/useCases/UpdateSpendingUseCase';
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
+
+import { User } from '../../../../users/infra/typeorm/entities/User';
+import { ICreateSpendingDTO } from '../../../dtos/ICreateSpendingDTO';
+import { IUpdateSpendingDTO } from '../../../dtos/IUpdateSpendingDTO';
+import { CreateSpendingUseCase } from '../../../useCases/CreateSpendingUseCase';
+import { DeleteSpendingUseCase } from '../../../useCases/DeleteSpendingUseCase';
+import { GetAllSpendingsUseCase } from '../../../useCases/GetAllSpendingsUseCase';
+import { GetSpendingUseCase } from '../../../useCases/GetSpendingUseCase';
+import { UpdateSpendingUseCase } from '../../../useCases/UpdateSpendingUseCase';
 
 @Controller('spendings')
 class SpendingsController {

@@ -1,6 +1,5 @@
+import { ICreateCategoryDTO } from '../../../dtos/ICreateCategoryDTO';
 import { Category } from '../entities/Category';
-
-import { ICreateCategoryDTO } from 'src/modules/spendings/dtos/ICreateCategoryDTO';
 
 interface ICategoriesRepository {
   findById(id: string): Promise<Category>;

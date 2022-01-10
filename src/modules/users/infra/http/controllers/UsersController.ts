@@ -10,11 +10,12 @@ import {
 } from '@nestjs/common';
 
 import { Response } from 'express';
-import { ICreateUserDTO } from 'src/modules/users/dtos/CreateUserDTO';
-import { CreateUserUseCase } from 'src/modules/users/useCases/CreateUserUseCase';
-import { DeleteUserUseCase } from 'src/modules/users/useCases/DeleteUserUseCase';
-import { GetUserUseCase } from 'src/modules/users/useCases/GetUserUseCase';
-import { PublicRoute } from 'src/shared/decorators/public.resource';
+
+import { PublicRoute } from '../../../../../shared/decorators/public.resource';
+import { ICreateUserDTO } from '../../../dtos/CreateUserDTO';
+import { CreateUserUseCase } from '../../../useCases/CreateUserUseCase';
+import { DeleteUserUseCase } from '../../../useCases/DeleteUserUseCase';
+import { GetUserUseCase } from '../../../useCases/GetUserUseCase';
 
 @Controller('users')
 class UsersController {
@@ -34,6 +35,8 @@ class UsersController {
   @Post()
   @PublicRoute()
   async create(@Body() createUser: ICreateUserDTO, @Res() response: Response) {
+    console.log(createUser);
+
     const createdUser = await this.createUserUseCase.execute(createUser);
 
     return response.json(createdUser);

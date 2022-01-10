@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Param, Post, Req, Res } from '@nestjs/common';
 
 import { Request, Response } from 'express';
-import { ICreateCategoryDTO } from 'src/modules/spendings/dtos/ICreateCategoryDTO';
-import { CreateCategoryUseCase } from 'src/modules/spendings/useCases/CreateCategoryUseCase';
-import { GetAllCategoriesUseCase } from 'src/modules/spendings/useCases/GetAllCategoriesUseCase';
-import { GetCategoryUseCase } from 'src/modules/spendings/useCases/GetCategoryUseCase';
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
+
+import { User } from '../../../../users/infra/typeorm/entities/User';
+import { ICreateCategoryDTO } from '../../../dtos/ICreateCategoryDTO';
+import { CreateCategoryUseCase } from '../../../useCases/CreateCategoryUseCase';
+import { GetAllCategoriesUseCase } from '../../../useCases/GetAllCategoriesUseCase';
+import { GetCategoryUseCase } from '../../../useCases/GetCategoryUseCase';
 
 @Controller('categories')
 class CategoriesController {

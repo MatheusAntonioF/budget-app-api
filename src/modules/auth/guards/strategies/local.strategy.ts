@@ -1,10 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 
-import { AuthenticationUserUseCase } from '../../useCases/AuthenticateUserUseCase';
-
 import { Strategy } from 'passport-local';
-import { User } from 'src/modules/users/infra/typeorm/entities/User';
+
+import { User } from '../../../../modules/users/infra/typeorm/entities/User';
+import { AuthenticationUserUseCase } from '../../useCases/AuthenticateUserUseCase';
 
 @Injectable()
 class LocalStrategy extends PassportStrategy(Strategy) {

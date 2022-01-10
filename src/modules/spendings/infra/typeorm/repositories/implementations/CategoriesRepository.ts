@@ -1,8 +1,8 @@
+import { getRepository } from 'typeorm';
+
+import { ICreateCategoryDTO } from '../../../../dtos/ICreateCategoryDTO';
 import { Category } from '../../entities/Category';
 import { ICategoriesRepository } from '../ICategoriesRepository';
-
-import { ICreateCategoryDTO } from 'src/modules/spendings/dtos/ICreateCategoryDTO';
-import { getRepository } from 'typeorm';
 
 class CategoriesRepository implements ICategoriesRepository {
   async findById(id: string): Promise<Category> {
