@@ -7,9 +7,9 @@ const dbConfig: TypeOrmModuleOptions = {
 
   host: process.env.DATABASE_HOST,
   port: 5432,
-  username: 'postgres',
-  password: 'docker',
-  database: 'budget_app_db',
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
 
   logging: true,
 
