@@ -15,7 +15,9 @@ class UsersRepositoryMock implements IUsersRepository {
       updated_at: new Date(),
     };
 
-    this.users.push(createdUser);
+    const savedUser = { ...createdUser };
+
+    this.users.push(savedUser);
 
     return createdUser;
   }

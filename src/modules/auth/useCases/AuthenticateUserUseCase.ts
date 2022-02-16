@@ -10,7 +10,7 @@ import { ITokenPayload } from '../dtos/ITokenPayload';
 class AuthenticationUserUseCase {
   constructor(
     @Inject('UsersRepository')
-    private readonly usersService: IUsersRepository,
+    private readonly usersRepository: IUsersRepository,
     @Inject('HashProvider')
     private readonly hashProvider: IHashProvider,
     private readonly jwtService: JwtService,
@@ -20,7 +20,7 @@ class AuthenticationUserUseCase {
     email: string,
     password: string,
   ): Promise<Omit<User, 'password'>> {
-    const foundUser = await this.usersService.findByEmail(email);
+    const foundUser = await this.usersRepository.findByEmail(email);
 
     if (!foundUser)
       throw new HttpException(
