@@ -35,8 +35,6 @@ class UsersController {
   @Post()
   @PublicRoute()
   async create(@Body() createUser: ICreateUserDTO, @Res() response: Response) {
-    console.log(createUser);
-
     const createdUser = await this.createUserUseCase.execute(createUser);
 
     return response.json(createdUser);
